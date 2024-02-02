@@ -1,24 +1,25 @@
 1. Mention at least two aspects that make interpolation search better than binary search [0.1 pts]
 
-Interpolation already assumes that the data is uniformiley distributed. If the keys in the sorted array are not uniformely distrubuted then interpolation can estimate a better position for the target key compared to the binary search. Another reason  interpolation seaarch is better than binary search is the reason thay it always divides the space in half, interpolation search dynamically adhusts its step size based on the estimated position. 
+The data are assumed to be uniformly distributed in interpolation search. When compared to binary search, interpolation search can yield a more precise estimate of the target key's location if the keys in the sorted array are not equally distributed. Interpolation search dynamically modifies its step size according to the predicted position, whereas binary search always divides the search space in half. This is another reason why interpolation search is frequently thought to be superior to binary search. Interpolation search may be more effective when working with non-uniformly dispersed data because of this flexibility.
 
 2. Interpolation search assumes that data is uniformly distributed. What
 happens this data follows a different distribution? Will the performance be affected? Why? [0.2 pts]
 
-if the data follows a different distribution, the performance of interpolation search can be affected negatively. Interpolation search relies on the assumption oof a uniform distribution to estimate the position of the target key. When the data is not uniformely distributed 
+The effectiveness of interpolation search may suffer if the data has a varied distribution. To precisely estimate the target key's location, interpolation search depends on the assumption of a uniform distribution.
 
 3. If we wanted to modify interpolation search to follow a different distribution, which part of the code would be affected? [0.1 pts]
 
-To modify interpolation search to follow a different distribution, you would need to adjust the interpolation formula. Specifically, the calculation of the pos variable would need to be adapted based on the characteristics of the distribution. The formula that estimates the position of the key is the part of the code that would be affected. By customizing this formula, you can tailor the interpolation search to better suit the distribution of your data
+You would need to change the interpolation formula in order to adapt interpolation search to a different distribution. More specifically, the pos variable computation would have to be modified to conform to the distribution's properties. The part of the code that has to be modified is the formula that determines where the key is located. You can adjust the interpolation search to more closely reflect your data's distribution by modifying this formula.
 
 • When comparing linear, binary and interpolation search:
 4. When is linear search your only option for searching data as binary and interpolation search may fail? [0.2 pts]
 
-Linear search becomes the only option when the data is not sorted. Both binary search and interpolation search rely on the assumption of a sorted array.
+When the data is not sorted, linear search becomes the only viable solution. A sorted array is assumed in both binary search and interpolation search.
 
 5. In which case will linear search outperform both binary and interpolation search, and why? [0.2 pts]
 
-Linear search may outperform both binary and interpolation search when the cost of random access to elements in the array is high. If accessing elements in the middle of the array is more expensive than simply iterating through the array sequentially, linear search can be more efficient. This can occur in scenarios where the data is stored in external storage (like a disk) and accessing arbitrary positions incurs a significant overhead.
+When there is a significant cost associated with random access to array items, linear search may perform better than both binary and interpolation search. If it is more costly to retrieve elements from the middle of the array than to iterate through it sequentially, then linear search can be a more effective option. These kinds of situations can happen if the data is kept in external storage, such a disk, where there is a large overhead associated with accessing random locations. In some situations, the sequential access pattern of linear search may perform better.
 
 6. Is there a way to improve binary and interpolation search to solve this issue? [0.2 pts]
-To improve binary and interpolation search for scenarios where the data is not uniformly distributed, one approach is to preprocess or transform the data to make it more uniformly distributed. Alternatively, adaptive strategies can be employed to dynamically adjust the search algorithm based on the observed distribution during runtime. This might involve switching between different search algorithms based on the characteristics of the data. However, such adaptations would need careful consideration and analysis to ensure effectiveness.
+
+To enhance binary and interpolation search for situations where the data is not uniformly distributed, one approach is to preprocess or transform the data to approximate a more uniform distribution. Another strategy involves the use of adaptive techniques to dynamically adjust the search algorithm based on the observed distribution during runtime. Such adaptations could entail switching between different search algorithms based on the data's characteristics. However, implementing these adaptations requires careful consideration and analysis to ensure their effectiveness in improving search performance.
