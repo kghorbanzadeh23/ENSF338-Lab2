@@ -16,10 +16,6 @@ algorithm because as the program runs there is no combination of results from su
 
 """
 
-""""
-5) It looks like O(n) = O(n-1) + O(n-2) + O(1),
-however with memorization the O is going to be O(n)
-"""
 
 # Original Fibonacci function without memoization
 def func_given(n):
@@ -38,6 +34,12 @@ def fib_memo(n, memo={}):
     else:
         memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)
         return memo[n]
+
+""""
+5) It looks like O(n) = O(n-1) + O(n-2) + O(1),
+however with memorization the O is going to be O(n)
+"""
+
 # Create lists to store timing results
 original_timings = []
 improved_timings = []
