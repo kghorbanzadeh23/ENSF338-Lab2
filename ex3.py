@@ -28,7 +28,6 @@ cProfile.run('main()')
 
 #2. A profile is to describe how the program behaviour is while a benchmark you are looking at one thing and seeing how effecient it is.
 
-#3. 23.558
+#3. 23.062
 
 #4. Execution time goes to mostly the list comprehension in third_function() taking 23.062.
-#And then main function where it took 0.495
