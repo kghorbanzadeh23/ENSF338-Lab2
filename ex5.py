@@ -68,10 +68,10 @@ plt.savefig('output.3.2.png')
 #Produce a linear regression plot
 plt.clf()
 def logs(x,a,b):
-    return np.log(x * a) + b
+    return a*np.log(x) + b
 constants = curve_fit(logs, sizes, avg_Binary)
 plt.scatter(sizes, avg_Binary)
-linevalues = [constants[0][0] * x + constants[0][1] for x in vector_sizes]
+linevalues = [constants[0][0] * np.log(x) + constants[0][1] for x in vector_sizes]
 plt.plot(vector_sizes, linevalues, 'r')
 
 # Save the plot to a file named output.3.2.png

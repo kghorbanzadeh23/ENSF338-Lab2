@@ -1,4 +1,4 @@
- 1. I would make it so if you are looking for a room <= 130 turn left. Then if it's greater turn right.
+ 1. I would make it so if you are looking for a room <= 130 turn left. Which then you will be searching from room EY100. Then if it's greater turn right. You would be starting from EY138 and reverse searching. Then do a linear search of each room until you find the selected room.
 
  2. It would take 28 steps because each step is passing a room.
 
