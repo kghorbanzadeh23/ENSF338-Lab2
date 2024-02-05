@@ -77,5 +77,5 @@ plt.plot(vector_sizes, linevalues, 'r')
 # Save the plot to a file named output.3.2.png
 plt.xlabel('Number of Records')
 plt.ylabel('Average Processing Time (seconds)')
-plt.title('Linear Regression: Number of Records vs. Average Processing Time')
+plt.title('Log Regression: Number of Records vs. Average Processing Time')
 plt.savefig('output.3.3.png')
