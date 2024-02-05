@@ -1,6 +1,9 @@
 import timeit 
 import random
-
+from matplotlib import pyplot as plt
+import numpy as np
+from scipy.optimize import curve_fit
+import math
 
 def linear_search(arr, target):
     for i in range(len(arr)):
@@ -32,7 +35,9 @@ def measure_search_time(search_func, arr, iterations=1000):
 
 # Vector sizes to test
 vector_sizes = [1000, 2000, 4000, 8000, 16000, 32000]
-
+avg_Linear = []
+avg_Binary = []
+sizes =[]
 # Measure performance for each vector size using both linear and binary search
 for size in vector_sizes:
     arr = sorted([random.randint(1, size*10) for _ in range(size)])  # Create a sorted vector
@@ -41,5 +46,36 @@ for size in vector_sizes:
     print(f"Vector Size: {size}, Average Linear Search Time: {avg_linear_time:.8f} seconds")
     print(f"Vector Size: {size}, Average Binary Search Time: {avg_binary_time:.8f} seconds")
     print()
+    avg_Linear.append(avg_linear_time)
+    avg_Binary.append(avg_binary_time)
+    sizes.append(size)
 
 
+#Produce a linear regression plot
+def linear(x, a, b):
+    return a*x+b
+constants = curve_fit(linear, sizes, avg_Linear)
+plt.scatter(sizes, avg_Linear)
+linevalues = [constants[0][0] * x + constants[0][1] for x in vector_sizes]
+plt.plot(vector_sizes, linevalues, 'r')
+
+# Save the plot to a file named output.3.2.png
+plt.xlabel('Number of Records')
+plt.ylabel('Average Processing Time (seconds)')
+plt.title('Linear Regression: Number of Records vs. Average Processing Time')
+plt.savefig('output.3.2.png')
+
+#Produce a linear regression plot
+plt.clf()
+def logs(x,a,b):
+    return np.log(x * a) + b
+constants = curve_fit(logs, sizes, avg_Binary)
+plt.scatter(sizes, avg_Binary)
+linevalues = [constants[0][0] * x + constants[0][1] for x in vector_sizes]
+plt.plot(vector_sizes, linevalues, 'r')
+
+# Save the plot to a file named output.3.2.png
+plt.xlabel('Number of Records')
+plt.ylabel('Average Processing Time (seconds)')
+plt.title('Linear Regression: Number of Records vs. Average Processing Time')
+plt.savefig('output.3.3.png')
