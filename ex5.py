@@ -79,3 +79,19 @@ plt.xlabel('Number of Records')
 plt.ylabel('Average Processing Time (seconds)')
 plt.title('Log Regression: Number of Records vs. Average Processing Time')
 plt.savefig('output.5.3.2.png')
+
+'''
+Discuss the results. For each interpolating function, describe the type of function?
+
+For linear search the function turns out to be linear, which makes senses because the
+requires going through the entire list to find said 'target'. The parameters are the
+number of records as x and average processing time as y.
+
+For binary search the function turns out to be a log function, this is because
+this search requires dividing the search in half until the target is found. The
+parameters are the number of records a and average processing time as y.
+
+Are the results what you expected?
+Yes both graph were expected as the result, because the time complexity of the search
+and the function directly correlates with each other.
+'''
