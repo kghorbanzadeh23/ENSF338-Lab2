@@ -1,4 +1,4 @@
-import time
+import timeit
 import matplotlib.pyplot as plt
 
 """"
@@ -12,7 +12,7 @@ into smaller sub-problems and then solving these sub-problems.
 Recursion in this case is not considered a divide-and-conquer
 algorithm because as the program runs there is no combination of results from sub-problems.
 
-3) It looks like O(n) = O(n-1) + O(n-2) + O(1), which means O is going to be O(n^2).
+3) It looks like O(n) = O(2^(n-1)) + O(2^(n-1)) + O(2^(n-1)), which means O is going to be O(2^n).
 
 """
 
@@ -45,33 +45,26 @@ original_timings = []
 improved_timings = []
 
 for n in range(36):
-    original_time = timeit.timeit("func_given(n)", globals=globals(), number=1000)
-    improved_time = timeit.timeit("fib_memo(n)", globals=globals(), number=1000)
+    original_time = timeit.timeit(lambda: func_given(n), number=1)
+    improved_time = timeit.timeit(lambda: fib_memo(n), number=1)
     original_timings.append(original_time)
     improved_timings.append(improved_time)
 
 # Plot the results
-plt.figure(figsize=(10, 5))
 plt.plot(range(36), original_timings, label="Original")
-plt.plot(range(36), improved_timings, label="Improved (Memoization)")
 plt.xlabel("Input (n)")
 plt.ylabel("Execution Time (seconds)")
 plt.legend()
-plt.grid(True)
-plt.title("Execution Time Comparison")
+plt.title("Execution Time (Without Memorization)")
 plt.savefig("ex1.6.1.jpg")
 
 # Clear the figure
 plt.clf()
 
 # Plot the results for larger n values (0 to 35)
-plt.figure(figsize=(10, 5))
-plt.plot(range(36), original_timings, label="Original")
 plt.plot(range(36), improved_timings, label="Improved (Memoization)")
 plt.xlabel("Input (n)")
 plt.ylabel("Execution Time (seconds)")
 plt.legend()
-plt.grid(True)
-plt.title("Execution Time Comparison (Zoomed in)")
-plt.ylim(0, max(max(original_timings), max(improved_timings)))
+plt.title("Execution Time (With Memorization)")
 plt.savefig("ex1.6.2.jpg")
